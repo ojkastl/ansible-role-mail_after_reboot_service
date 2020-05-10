@@ -1,0 +1,12 @@
+---
+# mail_after_reboot_service/handlers/main.yml
+
+- name: 'do a systemd daemon-reload'
+  systemd:
+    daemon_reload: 'yes'
+
+- name: 'start and enable the mail_after_reboot_service service'
+  service:
+    name: 'mail_after_reboot.service'
+    state: 'started'
+    enabled: 'true'

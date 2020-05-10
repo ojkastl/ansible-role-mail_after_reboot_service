@@ -1,0 +1,17 @@
+---
+# mail_after_reboot_service/tasks/main.yml
+
+- name: 'Set variable to use s-nail on Debian and derivatives'
+  set_fact:
+    mail_executable: '/usr/bin/s-nail'
+
+- name: 'Create systemd service unit for mail_after_reboot.service'
+  template:
+    src: 'mail_after_reboot.service.j2'
+    dest: '/etc/systemd/system/mail_after_reboot.service'
+    owner: '0'
+    group: '0'
+    mode: '0644'
+  notify:
+    - 'do a systemd daemon-reload'
+    - 'start and enable the mail_after_reboot_service service'    

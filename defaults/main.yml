@@ -1,0 +1,6 @@
+---
+# mail_after_reboot_service/defaults/main.yml
+
+mail_recipient: 'root'
+mail_executable: '/usr/bin/mail'
+dependency: 'postfix.service'

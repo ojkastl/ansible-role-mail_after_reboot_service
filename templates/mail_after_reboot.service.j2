@@ -1,0 +1,11 @@
+[Unit]
+Description=Send Mail after Reboot
+Requires={{ dependency }}
+After={{ dependency }}
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c "echo -e \"Mail after reboot, now running: $(uname -a)\" | tee | {{ mail_executable  }} -Ssendwait -s \"$HOSTNAME was rebooted on $(date), kernel is now: $(uname -r)\" {{ mail_recipient }}"
+
+[Install]
+WantedBy=multi-user.target
