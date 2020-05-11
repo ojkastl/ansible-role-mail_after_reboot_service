@@ -14,4 +14,4 @@
     mode: '0644'
   notify:
     - 'do a systemd daemon-reload'
-    - 'start and enable the mail_after_reboot_service service'    
+    - 'start and enable the mail_after_reboot_service service'
