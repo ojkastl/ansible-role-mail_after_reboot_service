@@ -6,6 +6,12 @@
     mail_executable: '/usr/bin/s-nail'
   when: 'ansible_os_family == "Debian"'
 
+- name: 'Install s-nail on Debian and derivatives'
+  package:
+    name: 's-nail'
+    state: 'present'
+  when: 'ansible_os_family == "Debian"'
+
 - name: 'Create systemd service unit for mail_after_reboot.service'
   template:
     src: 'mail_after_reboot.service.j2'
